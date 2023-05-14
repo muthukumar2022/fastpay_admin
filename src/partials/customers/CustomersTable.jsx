@@ -1,37 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Customer from "./CustomersTableItem";
 
-// import Image01 from "../../images/user-40-01.jpg";
-// import Image02 from "../../images/user-40-02.jpg";
-// import Image03 from "../../images/user-40-03.jpg";
-// import Image04 from "../../images/user-40-04.jpg";
-// import Image05 from "../../images/user-40-05.jpg";
-// import Image06 from "../../images/user-40-06.jpg";
-// import Image07 from "../../images/user-40-07.jpg";
-// import Image08 from "../../images/user-40-08.jpg";
-// import Image09 from "../../images/user-40-09.jpg";
-// import Image10 from "../../images/user-40-10.jpg";
-
 function CustomersTable({ selectedItems }) {
   const customers = [
     {
       id: "0",
 
       name: "Patricia Semklo",
-      email: "patricia.semklo@app.com",
-      location: "🇬🇧 London, UK",
+      email: "Kitchen ID",
+      location: "2300.00",
       orders: "24",
       lastOrder: "#123567",
-      spent: "$2,890.66",
-      refunds: "-",
-      fav: true,
     },
     {
       id: "1",
 
       name: "Dominik Lamakani",
-      email: "dominik.lamakani@gmail.com",
-      location: "🇩🇪 Dortmund, DE",
+      email: "Kitchen ID",
+      location: "0.00",
       orders: "77",
       lastOrder: "#779912",
       spent: "$14,767.04",
@@ -42,8 +28,8 @@ function CustomersTable({ selectedItems }) {
       id: "2",
 
       name: "Ivan Mesaros",
-      email: "imivanmes@gmail.com",
-      location: "🇫🇷 Paris, FR",
+      email: "Kitchen ID",
+      location: "375.00",
       orders: "44",
       lastOrder: "#889924",
       spent: "$4,996.00",
@@ -54,8 +40,8 @@ function CustomersTable({ selectedItems }) {
       id: "3",
 
       name: "Maria Martinez",
-      email: "martinezhome@gmail.com",
-      location: "🇮🇹 Bologna, IT",
+      email: "Kitchen ID",
+      location: "345.00",
       orders: "29",
       lastOrder: "#897726",
       spent: "$3,220.66",
@@ -66,8 +52,8 @@ function CustomersTable({ selectedItems }) {
       id: "4",
 
       name: "Vicky Jung",
-      email: "itsvicky@contact.com",
-      location: "🇬🇧 London, UK",
+      email: "Kitchen ID",
+      location: "0.00",
       orders: "22",
       lastOrder: "#123567",
       spent: "$2,890.66",
@@ -78,8 +64,8 @@ function CustomersTable({ selectedItems }) {
       id: "5",
 
       name: "Tisho Yanchev",
-      email: "tisho.y@kurlytech.com",
-      location: "🇬🇧 London, UK",
+      email: "Kitchen ID",
+      location: "0.00",
       orders: "14",
       lastOrder: "#896644",
       spent: "$1,649.99",
@@ -90,8 +76,8 @@ function CustomersTable({ selectedItems }) {
       id: "6",
 
       name: "James Cameron",
-      email: "james.ceo@james.tech",
-      location: "🇫🇷 Marseille, FR",
+      email: "Kitchen ID",
+      location: "0.00",
       orders: "34",
       lastOrder: "#136988",
       spent: "$3,569.87",
@@ -102,8 +88,8 @@ function CustomersTable({ selectedItems }) {
       id: "7",
 
       name: "Haruki Masuno",
-      email: "haruki@supermail.jp",
-      location: "🇯🇵 Tokio, JP",
+      email: "Kitchen ID",
+      location: "0.00",
       orders: "112",
       lastOrder: "#442206",
       spent: "$19,246.07",
@@ -114,8 +100,8 @@ function CustomersTable({ selectedItems }) {
       id: "8",
 
       name: "Joe Huang",
-      email: "joehuang@hotmail.com",
-      location: "🇨🇳 Shanghai, CN",
+      email: "Kitchen ID",
+      location: "0.00",
       orders: "64",
       lastOrder: "#764321",
       spent: "$12,276.92",
@@ -126,8 +112,8 @@ function CustomersTable({ selectedItems }) {
       id: "9",
 
       name: "Carolyn McNeail",
-      email: "carolynlove@gmail.com",
-      location: "🇮🇹 Milan, IT",
+      email: "Kitchen ID",
+      location: "0.00",
       orders: "19",
       lastOrder: "#908764",
       spent: "$1,289.97",
@@ -139,6 +125,7 @@ function CustomersTable({ selectedItems }) {
   const [selectAll, setSelectAll] = useState(false);
   const [isCheck, setIsCheck] = useState([]);
   const [list, setList] = useState([]);
+  const [selected, setSelected] = useState(2);
 
   useEffect(() => {
     setList(customers);
@@ -168,58 +155,27 @@ function CustomersTable({ selectedItems }) {
   }, [isCheck]);
 
   return (
-    <div className="bg-white shadow-lg rounded-sm border border-slate-200 relative">
-      <header className="px-5 py-4">
-        <h2 className="font-semibold text-slate-800">
-          All Customers <span className="text-slate-400 font-medium">248</span>
-        </h2>
-      </header>
+    <div className="bg-white shadow-lg rounded-sm relative ml-11 mr-11">
       <div>
         {/* Table */}
         <div className="overflow-x-auto">
           <table className="table-auto w-full">
             {/* Table header */}
-            <thead className="text-xs font-semibold uppercase text-slate-500 bg-slate-50 border-t border-b border-slate-200">
+            <thead className="text-sm font-bold border-t border-b border-slate-200">
               <tr>
+                {/* <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
+                  <span className="font-semibold text-left">Favourite</span>
+                </th> */}
                 <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
-                  <div className="flex items-center">
-                    <label className="inline-flex">
-                      <span className="sr-only">Select all</span>
-                      <input
-                        className="form-checkbox"
-                        type="checkbox"
-                        checked={selectAll}
-                        onChange={handleSelectAll}
-                      />
-                    </label>
+                  <div className="font-semibold text-left">Kitchen ID</div>
+                </th>
+                <th className="px-20 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
+                  <div className="font-semibold text-left">
+                    Revenue / Wk (INR)
                   </div>
                 </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap w-px">
-                  <span className="sr-only">Favourite</span>
-                </th>
                 <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Order</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Email</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Location</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold">Orders</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Last order</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold text-left">Total spent</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <div className="font-semibold">Refunds</div>
-                </th>
-                <th className="px-2 first:pl-5 last:pr-5 py-3 whitespace-nowrap">
-                  <span className="sr-only">Menu</span>
+                  <div className="font-semibold text-left">Activated</div>
                 </th>
               </tr>
             </thead>
@@ -230,15 +186,14 @@ function CustomersTable({ selectedItems }) {
                   <Customer
                     key={customer.id}
                     id={customer.id}
-                    // image={customer.image}
                     name={customer.name}
                     email={customer.email}
                     location={customer.location}
                     orders={customer.orders}
-                    lastOrder={customer.lastOrder}
-                    spent={customer.spent}
-                    refunds={customer.refunds}
-                    fav={customer.fav}
+                    // lastOrder={customer.lastOrder}
+                    // spent={customer.spent}
+                    // refunds={customer.refunds}
+                    // fav={customer.fav}
                     handleClick={handleClick}
                     isChecked={isCheck.includes(customer.id)}
                   />
